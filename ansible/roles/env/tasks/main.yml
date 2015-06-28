@@ -1,0 +1,13 @@
+---
+- name: Install rails and bundler
+  sudo_user: "{{ rbenv_user }}"
+  gem: name={{ item }} executable=.rbenv/shims/gem user_install=False
+  with_items:
+    - rails
+    - bundler
+
+- name: Install javascript tools
+  npm: name={{ item }} state=latest global=yes
+  with_items:
+    - bower
+    - grunt-cli

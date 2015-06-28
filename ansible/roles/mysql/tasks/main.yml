@@ -1,0 +1,24 @@
+---
+- name: Install mysql
+  apt: name={{ item }} state=latest
+  with_items:
+    - mysql-server-5.6
+    - python-mysqldb
+
+- name: Set mysql service to start on boot
+  service: name=mysql state=started enabled=true
+
+- name: Put my-develop.cnf
+  template: src=my-develop.cnf.j2 dest=/etc/mysql/conf.d/my-develop.cnf backup=true mode=0644
+  notify: restart mysql
+
+- name: Set the root privileges
+  mysql_user:
+    user: root
+    host: "{{ item }}"
+    password: ""
+  with_items:
+   - "%"
+   - 127.0.0.1
+   - ::1
+   - localhost
