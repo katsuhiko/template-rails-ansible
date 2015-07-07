@@ -1,4 +1,9 @@
 ---
+- name: Install mysql
+  apt: name={{ item }} state=latest
+  with_items:
+    - libmysqld-dev
+
 - name: Install rails and bundler
   sudo_user: "{{ rbenv_user }}"
   gem: name={{ item }} executable=.rbenv/shims/gem user_install=False
