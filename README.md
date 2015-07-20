@@ -18,6 +18,16 @@ Building the virtual machine:
     host $ cd template-rails-ansible
     host $ vagrant up
 
+## Create files
+
+~/.ssh/amazon.pem
+
+~/.aws/credentials:
+
+	[default]
+	aws_access_key_id = XXXXXXXX
+	aws_secret_access_key = XXXXXXXX
+
 ## How To New Rails Project
 
 * https://github.com/RailsApps/rails-composer
