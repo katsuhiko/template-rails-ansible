@@ -22,7 +22,7 @@ Building the virtual machine:
 
 ~/.ssh/amazon.pem
 
-~/.aws/credentials:
+~/.aws/credentials
 
 	[default]
 	aws_access_key_id = XXXXXXXX
