@@ -17,18 +17,16 @@
     - bower
     - grunt-cli
 
-- name: Install ntp
-  apt: name={{ item }} state=latest
-  with_items:
-    - ntp
-
-- name: Set ntp service to start on boot
-  service: name=ntp enabled=true
-
 - name: Add repository for ansible
   apt_repository: repo='ppa:ansible/ansible' state=present
 
-- name: Install ansible
+- name: Install ansible and pip
   apt: name={{ item }} state=latest
   with_items:
     - ansible
+    - python-pip
+
+- name: Install boto
+  pip: name={{ item }} state=latest
+  with_items:
+    - boto

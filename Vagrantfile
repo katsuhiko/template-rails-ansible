@@ -60,6 +60,8 @@ Vagrant.configure(2) do |config|
   config.vm.provider "virtualbox" do |vb|
     # Customize the amount of memory on the VM:
     vb.memory = "2048"
+    # Set the time to HOST
+    vb.customize ["setextradata", :id, "VBoxInternal/Devices/VMMDev/0/Config/GetHostTimeDisabled", 0]
   end
 
   # Define a Vagrant Push strategy for pushing to Atlas. Other push strategies
